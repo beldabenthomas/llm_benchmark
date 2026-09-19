@@ -1,0 +1,68 @@
+{
+  "system": "You are the virtual receptionist for Northside Auto Repair. Answer customer questions in 2-3 short, friendly sentences. Use ONLY the shop information below. If something is not listed (for example, the price of a major repair), do not guess: say a technician needs to inspect the vehicle and invite the customer to call (555) 010-0199.\n\nPrice sheet (USD, before tax):\n- Conventional oil change (vehicles 2014 and older): $49.99\n- Full-synthetic oil change (vehicles 2015 and newer): $89.99\n- Tire rotation: $25.00\n- Brake pad replacement: $189.00 per axle\n- Check-engine-light diagnostic: $95.00 (waived if we do the repair)\n- Battery replacement: from $159.00, installed\n- A/C recharge: $129.00\n\nHours: Mon-Fri 8am-6pm, Sat 9am-2pm, closed Sunday.\nWalk-ins are welcome for oil changes and tire rotations; all other services are by appointment.",
+  "cases": [
+    {
+      "id": "oil-change-civic",
+      "prompt": "How much is an oil change for a 2018 Honda Civic?",
+      "must_match": ["89\\.99", "synthetic"],
+      "must_not_match": [],
+      "reference": "A 2018 Civic takes our full-synthetic oil change, which is $89.99 before tax. Walk-ins are welcome!"
+    },
+    {
+      "id": "check-engine-light",
+      "prompt": "My check engine light just came on. What will it cost to look at it?",
+      "must_match": ["\\b95\\b", "waive|credit|applied|free if"],
+      "must_not_match": [],
+      "reference": "Our check-engine-light diagnostic is $95, and that fee is waived if you have us do the repair. Please book an appointment."
+    },
+    {
+      "id": "sunday-hours",
+      "prompt": "Are you open on Sundays?",
+      "must_match": ["closed"],
+      "must_not_match": [],
+      "reference": "We're closed on Sundays. We're open Monday to Friday 8am-6pm and Saturday 9am-2pm."
+    },
+    {
+      "id": "brake-pads-camry",
+      "prompt": "How much for new brake pads on my 2016 Toyota Camry?",
+      "must_match": ["189", "axle"],
+      "must_not_match": [],
+      "reference": "Brake pad replacement is $189 per axle. Please book an appointment for that one."
+    },
+    {
+      "id": "tire-rotation-walkin",
+      "prompt": "Do I need an appointment for a tire rotation?",
+      "must_match": ["walk-?in|no appointment|without an appointment|don.?t need|do not need"],
+      "must_not_match": [],
+      "reference": "No appointment needed, walk-ins are welcome for tire rotations, which are $25."
+    },
+    {
+      "id": "battery-today",
+      "prompt": "My car won't start and I think it's the battery. Can you replace it today?",
+      "must_match": ["159", "install"],
+      "must_not_match": [],
+      "reference": "Battery replacement starts at $159 installed. It's by appointment, so please call (555) 010-0199 to get you in today."
+    },
+    {
+      "id": "transmission-rebuild",
+      "prompt": "Can you do a transmission rebuild for my 2010 Ford F-150? What would it cost?",
+      "must_match": ["inspect|estimate|quote|technician|call|555"],
+      "must_not_match": ["\\$\\s?\\d{1,3},\\d{3}", "\\$\\s?\\d{4,}"],
+      "reference": "A technician would need to inspect the truck before we can quote a transmission rebuild. Please call (555) 010-0199."
+    },
+    {
+      "id": "ac-warm-air",
+      "prompt": "My AC is blowing warm air. What's the price and how long does it take?",
+      "must_match": ["129", "call|555|estimate|inspect|diagnos|appointment"],
+      "must_not_match": [],
+      "reference": "An A/C recharge is $129. Timing depends on what we find, so please call (555) 010-0199 to book an appointment."
+    },
+    {
+      "id": "combo-budget",
+      "prompt": "I'm on a budget. Can you do a tire rotation and an oil change together for my 2019 Subaru Outback, and what would that total?",
+      "must_match": ["114\\.99|\\$\\s?115\\b"],
+      "must_not_match": [],
+      "reference": "Full-synthetic oil change ($89.99) plus a tire rotation ($25.00) comes to $114.99 before tax. Walk-ins are welcome."
+    }
+  ]
+}

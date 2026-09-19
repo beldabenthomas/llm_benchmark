@@ -1,0 +1,27 @@
+{
+  "_pricing_note": "USD per 1M tokens. Prices and model names change often: verify against each provider's pricing page and model list before trusting the results.",
+  "models": [
+    {
+      "label": "GPT-4o mini",
+      "provider": "openai",
+      "model": "gpt-4o-mini",
+      "input_per_1m_usd": 0.15,
+      "output_per_1m_usd": 0.6,
+      "params": {
+        "temperature": 0,
+        "max_completion_tokens": 300
+      }
+    },
+    {
+      "label": "Gemini 3.6 Flash",
+      "provider": "gemini",
+      "model": "gemini-3.6-flash",
+      "input_per_1m_usd": 1.5,
+      "output_per_1m_usd": 7.5,
+      "params": {
+        "temperature": 0,
+        "max_output_tokens": 4096
+      }
+    }
+  ]
+}
